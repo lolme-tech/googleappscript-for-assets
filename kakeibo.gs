@@ -8,8 +8,8 @@ function getFormValue(e) {
   outputmoney=Number(outputmoney);
   inputmoney=Number(inputmoney);
   //受け取った値の配列内確認用コード
-  /*sheet.getRange(22,9).setValue(e.values[5]);
-  console.log(e.values);*/
+  //sheet.getRange(22,9).setValue(e.values[1]);
+  //console.log(e.values[1]);
   //問題なし
   if(kessai==="現金")
       {
@@ -42,27 +42,32 @@ function getFormValue(e) {
       var mobilemoney=sheet.getRange(11,8).getValue();
       mobilemoney=mobilemoney-outputmoney;
       sheet.getRange(11,8).setValue(mobilemoney);
+      var currentmoney=sheet.getRange(9,10).getValue();
+      currentmoney=currentmoney-outputmoney;
+      sheet.getRange(9,10).setValue(currentmoney);
     }
+    //問題なし
   if(kessai==="アナログスイカ")
     {
       //アナログスイカの残高
       var analogmoney=sheet.getRange(11,9).getValue();
       analogmoney=analogmoney-outputmoney;
       sheet.getRange(11,9).setValue(analogmoney);
+      var currentmoney=sheet.getRange(9,10).getValue();
+      currentmoney=currentmoney-outputmoney;
+      sheet.getRange(9,10).setValue(currentmoney);
     }  
+    //問題なし
   if(kessai==="スタバカード")
     {
       //スターバックスカードのセル
       var starback=sheet.getRange(7,10).getValue();
-      starback=starback+outputmoney;
-      //出金した金額とスタバカードの金額を足したものをスタバカードセルにセット
+      starback=starback-outputmoney;
+      //出金した金額とスタバカードの金額を引いたものをスタバカードセルにセット
       sheet.getRange(7,10).setValue(starback);
-      //使っていいお金セル
-      var currentmoney=sheet.getRange(9,10).getValue();
-      currentmoney=currentmoney-outputmoney;
-      //スタバカードに入金した分を使っていいお金から差し引く
-      sheet.getRange(9,10).setValue(starback);
+      
     }
+  //問題なし
   if(kessai==="現金の引き出し")
     {
       //銀行のお金セル
@@ -81,6 +86,9 @@ function getFormValue(e) {
         //使っていいお金
         var currentmoney=sheet.getRange(9,10).getValue();
         currentmoney=currentmoney+inputmoney;
+        bankmoney=sheet.getRange(9,8).getValue();
+        bankmoney=bankmoney+inputmoney;
+        sheet.getRange(9,8).setValue(bankmoney);
         sheet.getRange(9,10).setValue(currentmoney);
       }
   if(variaty==="使ってはいけないお金(奨学金)")
@@ -97,6 +105,7 @@ function getFormValue(e) {
         bankmoney=bankmoney+inputmoney;
         sheet.getRange(9,8).setValue(bankmoney);
       }
+  //問題なし
   if(variaty==="モバイルスイカにチャージ")
       {
         //モバイルスイカ
