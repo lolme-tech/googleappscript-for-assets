@@ -91,13 +91,13 @@ function getFormValue(e) {
         sheet.getRange(9,8).setValue(bankmoney);
         sheet.getRange(9,10).setValue(currentmoney);
       }
+    //問題なし
   if(variaty==="使ってはいけないお金(奨学金)")
       {
         //奨学金
         var currentmoney=sheet.getRange(9,9).getValue();
         //銀行のお金
         var bankmoney=sheet.getRange(9,8).getValue();
-        
         currentmoney=currentmoney+inputmoney;
         //入金された奨学金を奨学金に加算
         sheet.getRange(9,9).setValue(currentmoney);
@@ -126,6 +126,19 @@ function getFormValue(e) {
         currentmoney=currentmoney-outputmoney;
         sheet.getRange(9,10).setValue(currentmoney);
       }
+    //問題なし
+  if(variaty==="スタバカードにチャージ"){
+        //スタバカード
+        var sutaba=sheet.getRange(7,10).getValue();
+        var sutaba=inputmoney+sutaba;
+        sheet.getRange(7,10).setValue(sutaba);
+        var bankmoney=sheet.getRange(9,8).getValue();
+        bankmoney=bankmoney-inputmoney;
+        sheet.getRange(9,8).setValue(bankmoney);
+        var currentmoney=sheet.getRange(9,10).getValue();
+        currentmoney=currentmoney-inputmoney;
+        sheet.getRange(9,10).setValue(currentmoney);
+  }
 }
 //以前に書いていたコード、for文などの使い方のために一応残しておく
   /*var lastRow=sheet.getLastRow();
