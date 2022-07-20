@@ -1,5 +1,6 @@
 function getFormValue(e) {
-  var sheet=SpreadsheetApp.getActiveSheet();
+  var activeSpreadSheet = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet=activeSpreadSheet.getSheetByName("シート2");
   //0=タイムスタンプ , 1=入金 , 2=決済手段 . 3=使った金額 , 5=入金の種類
   var kessai = e.values[2]
   var outputmoney = e.values[3]
