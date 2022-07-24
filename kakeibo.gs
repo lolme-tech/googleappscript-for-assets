@@ -151,6 +151,16 @@ function getFormValue(e) {
         currentmoney=currentmoney-inputmoney;
         sheet.getRange(9,10).setValue(currentmoney);
   }
+    if(variaty==="財布に現金を追加"){
+    //財布の残高
+        var wallet=sheet.getRange(7,8).getValue();
+        var wallet=inputmoney+wallet;
+        sheet.getRange(7,8).setValue(wallet);
+        //使っていいお金
+        var currentmoney=sheet.getRange(9,10).getValue();
+        currentmoney=currentmoney+inputmoney;
+        sheet.getRange(9,10).setValue(currentmoney);
+  }
 }
 //以前に書いていたコード、for文などの使い方のために一応残しておく
   /*var lastRow=sheet.getLastRow();
