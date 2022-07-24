@@ -23,6 +23,17 @@ function getFormValue(e) {
         kessaimoney=kessaimoney-outputmoney;
         sheet.getRange(9,10).setValue(kessaimoney);
       }
+   //問題なし
+  if(kessai==="銀行から直接支出(手数料)"){
+        //銀行の残高
+        var bankmoney=sheet.getRange(9,8).getValue();
+        bankmoney=bankmoney-outputmoney;
+        sheet.getRange(9,8).setValue(bankmoney);
+        //使っていいお金
+        var kessaimoney=sheet.getRange(9,10).getValue();
+        kessaimoney=kessaimoney-outputmoney;
+        sheet.getRange(9,10).setValue(kessaimoney);
+  }
   //問題なし
   if(kessai==="クレジットカード")
       {
