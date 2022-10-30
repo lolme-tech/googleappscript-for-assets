@@ -23,7 +23,7 @@ function getFormValue(e) {
         kessaimoney=kessaimoney-outputmoney;
         sheet.getRange(9,10).setValue(kessaimoney);
       }
-   //問題なし
+  //問題なし
   if(kessai==="銀行から直接支出(手数料)"){
         //銀行の残高
         var bankmoney=sheet.getRange(9,8).getValue();
@@ -54,9 +54,6 @@ function getFormValue(e) {
       var mobilemoney=sheet.getRange(11,8).getValue();
       mobilemoney=mobilemoney-outputmoney;
       sheet.getRange(11,8).setValue(mobilemoney);
-      var currentmoney=sheet.getRange(9,10).getValue();
-      currentmoney=currentmoney-outputmoney;
-      sheet.getRange(9,10).setValue(currentmoney);
     }
     //問題なし
   if(kessai==="アナログスイカ")
@@ -65,9 +62,6 @@ function getFormValue(e) {
       var analogmoney=sheet.getRange(11,9).getValue();
       analogmoney=analogmoney-outputmoney;
       sheet.getRange(11,9).setValue(analogmoney);
-      var currentmoney=sheet.getRange(9,10).getValue();
-      currentmoney=currentmoney-outputmoney;
-      sheet.getRange(9,10).setValue(currentmoney);
     }  
     //問題なし
   if(kessai==="スタバカード")
@@ -117,26 +111,39 @@ function getFormValue(e) {
         bankmoney=bankmoney+inputmoney;
         sheet.getRange(9,8).setValue(bankmoney);
       }
-  //問題なし
+  //10月25日更新
   if(variaty==="モバイルスイカにチャージ")
       {
-        //モバイルスイカ
+        //モバイルスイカのセルを取得
         var mobile=sheet.getRange(11,8).getValue();
         var addmobile=inputmoney+mobile;
+        //モバイルスイカにチャージ分をセット
         sheet.getRange(11,8).setValue(addmobile);
+        //使っていいお金のセルを取得(マイナス)
+        var currentmoney=sheet.getRange(9,10).getValue();
+        currentmoney=currentmoney-outputmoney;
+        sheet.getRange(9,10).setValue(currentmoney);
+        //銀行の残高のセルを取得(マイナス)
         var bankmoney=sheet.getRange(9,8).getValue();
         bankmoney=bankmoney-inputmoney;
         sheet.getRange(9,8).setValue(bankmoney);
       }
+  //10月25日更新
   if(variaty==="アナログスイカにチャージ")
       {
-        //アナログスイカ
+        //アナログスイカのセルを取得
         var analog=sheet.getRange(11,9).getValue();
-        var addanalog=outputmoney+analog;
+        var addanalog=inputmoney+analog;
+        //アナログスイカのセルにチャージ分をセット(プラス)
         sheet.getRange(11,9).setValue(addanalog);
+        //使っていいお金のセルを取得(マイナス)
         var currentmoney=sheet.getRange(9,10).getValue();
         currentmoney=currentmoney-outputmoney;
         sheet.getRange(9,10).setValue(currentmoney);
+        //財布の残高のセルを取得(マイナス)
+        var walletmoney=sheet.getRange(7,8).getValue();
+        walletmoney=walletmoney-outputmoney;
+        sheet.getRange(7,8).setValue(walletmoney);
       }
     //問題なし
   if(variaty==="スタバカードにチャージ"){
@@ -151,7 +158,7 @@ function getFormValue(e) {
         currentmoney=currentmoney-inputmoney;
         sheet.getRange(9,10).setValue(currentmoney);
   }
-    if(variaty==="財布に現金を追加"){
+  if(variaty==="財布に現金を追加"){
     //財布の残高
         var wallet=sheet.getRange(7,8).getValue();
         var wallet=inputmoney+wallet;
