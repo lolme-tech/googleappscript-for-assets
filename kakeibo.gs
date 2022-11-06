@@ -145,15 +145,17 @@ function getFormValue(e) {
         walletmoney=walletmoney-outputmoney;
         sheet.getRange(7,8).setValue(walletmoney);
       }
-    //問題なし
+    //11月6日更新
   if(variaty==="スタバカードにチャージ"){
-        //スタバカード
+        //スタバカードにプラス
         var sutaba=sheet.getRange(7,10).getValue();
         var sutaba=inputmoney+sutaba;
         sheet.getRange(7,10).setValue(sutaba);
-        var bankmoney=sheet.getRange(9,8).getValue();
-        bankmoney=bankmoney-inputmoney;
-        sheet.getRange(9,8).setValue(bankmoney);
+        //クレジットカードからマイナス
+        var credit=sheet.getRange(7,9).getValue();
+        credit=credit+inputmoney;
+        sheet.getRange(7,9).setValue(bankmoney);
+        //使っていいお金からマイナス
         var currentmoney=sheet.getRange(9,10).getValue();
         currentmoney=currentmoney-inputmoney;
         sheet.getRange(9,10).setValue(currentmoney);
