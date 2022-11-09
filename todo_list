@@ -1,0 +1,12 @@
+function myFunction() {
+ var sheet = SpreadsheetApp.getActiveSheet();
+ var currentRow = sheet.getActiveCell().getRow();
+ var currentCol = sheet.getActiveCell().getColumn();
+ var updateRangeData = sheet.getRange('A' + currentRow);
+ var updateRangeTask = sheet.getRange('C' + currentRow);
+
+ if(currentRow > 1 && currentCol == 2){
+   updateRangeData.setValue(new Date());
+   updateRangeTask.setValue("未着手");
+ }
+} 
