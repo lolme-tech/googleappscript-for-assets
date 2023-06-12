@@ -1,5 +1,6 @@
 function myFunction() {
- var sheet = SpreadsheetApp.getActiveSheet();
+ var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+ var sheet = spreadsheet.getSheetByName("TODO");
  var currentRow = sheet.getActiveCell().getRow();
  var currentCol = sheet.getActiveCell().getColumn();
  var updateRangeData = sheet.getRange('A' + currentRow);
